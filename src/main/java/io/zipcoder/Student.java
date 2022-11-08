@@ -42,5 +42,14 @@ public class Student {
     public Integer getNumberOfExamsTaken(){
         return examScores.size();
     }
-
+    public String getExamScoresString(){
+        return examScores.toString();
+    }
+    public void addExamScore(Double examScore){
+        examScores.add(examScore);
+    }
+    public void setExamScore(int examScore, Double newScore){
+        examScores.remove(examScore);
+        examScores.add(examScore,newScore);
+    }
 }

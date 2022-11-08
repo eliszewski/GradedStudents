@@ -49,7 +49,18 @@ public class Student {
         examScores.add(examScore);
     }
     public void setExamScore(int examScore, Double newScore){
-        examScores.remove(examScore);
-        examScores.add(examScore,newScore);
+        examScores.set(examScore - 1,newScore);
+    }
+
+    public Double getAverageExamScore(){
+        Double sum = 0.0;
+        for (Double score: examScores
+             ) {
+            sum+=score;
+        }
+        return sum / examScores.size();
+    }
+    public String toString(){
+        return String.format(" |",firstName,lastName,getAverageExamScore(),getExamScoresString());
     }
 }

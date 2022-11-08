@@ -24,5 +24,5 @@ public class Classroom {
         }
         return sum / this.students.length;
     }
-
+    public void addStudent
 }

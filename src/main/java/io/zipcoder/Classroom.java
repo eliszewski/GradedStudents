@@ -1,5 +1,9 @@
 package io.zipcoder;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Classroom {
     Student[] students;
     public Classroom(int maxNumberOfStudents){
@@ -24,7 +28,22 @@ public class Classroom {
         }
         return sum / this.students.length;
     }
-    public void addStudent(){
-
+    public void addStudent(Student student){
+        List<Student> students1 = Arrays.asList(this.students);
+        students1.add(student);
+        this.students = students1.toArray(new Student[0]);
+    }
+    public void removeStudent(String firstName, String lastName){
+        List<Student> students1 = Arrays.asList(this.students);
+        for (Student student:students1
+             ) {
+            if(student.getFirstName().equals(firstName) && student.getLastName().equals(lastName)){
+                students1.remove(student);
+            }
+        }
+        this.students = students1.toArray(new Student[0]);
+    }
+    public Student[] getStudentsByScore(){
+        return null;
     }
 }

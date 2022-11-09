@@ -13,6 +13,9 @@ public class Student {
     public Student(String firstName, String lastName, Double[] examScores){
         this.firstName = firstName;
         this.lastName = lastName;
+        if(examScores == null){
+            examScores = new Double[0];
+        }
         this.examScores = new ArrayList<>(Arrays.asList(examScores));
     }
 

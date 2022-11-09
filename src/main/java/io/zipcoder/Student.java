@@ -52,7 +52,7 @@ public class Student {
         examScores.add(examScore);
     }
     public void setExamScore(int examScore, Double newScore){
-        examScores.set(examScore - 1,newScore);
+        examScores.set(examScore ,newScore);
     }
 
     public Double getAverageExamScore(){
@@ -64,6 +64,6 @@ public class Student {
         return sum / examScores.size();
     }
     public String toString(){
-        return String.format(" |",firstName,lastName,getAverageExamScore(),getExamScoresString());
+        return String.format("%s | %s | %.1f | %s",firstName,lastName,getAverageExamScore(),getExamScoresString());
     }
 }

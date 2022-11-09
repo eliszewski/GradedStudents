@@ -1,8 +1,6 @@
 package io.zipcoder;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Classroom {
     Student[] students;
@@ -43,7 +41,26 @@ public class Classroom {
         }
         this.students = students1.toArray(new Student[0]);
     }
-    public Student[] getStudentsByScore(){
-        return null;
+    protected static class StudentComparator implements Comparator<Student> {
+
+        @Override
+        public int compare(Student o1, Student o2) {
+            if(o1.getAverageExamScore() > o2.getAverageExamScore()) {
+                return -1;
+            }else if (o1.getAverageExamScore() < o2.getAverageExamScore()) {
+                return +1;
+            }else {
+                // average scores are equal
+                return o1.getFirstName().compareTo(o2.getFirstName());
+            }
+
+        }
+
     }
+    public Student[] getStudentsByScore(){
+        List<Student> theList = new ArrayList(Arrays.asList(this.getStudents()));
+        Collections.sort(theList, new StudentComparator());
+        return theList.toArray(new Student[0]);
+    }
+
 }

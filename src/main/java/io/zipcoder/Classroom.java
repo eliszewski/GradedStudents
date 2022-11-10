@@ -66,7 +66,8 @@ public class Classroom {
     }
 
     public double percentileCalculator(int index, int len){
-        return Math.abs((index + 1) - len) / len * 100;
+        double thisThing = (double)(len - (index + 1)) / (double) len * 100;
+        return thisThing;
     }
     public Map<Student,Character> getGradeBook(){
         Map<Student,Character> mapping = new LinkedHashMap<>();

@@ -83,8 +83,30 @@ public class ClassroomTest {
     }
     @Test
     public void testGetGradeBook(){
-
-
+        Double[] s5Scores = {75.0,89.0,90.2,67.5};
+        Double[] s1Scores = {10.0,15.0,5.0};
+        Double[] s6Scores = {10.0,13.0,90.0};
+        Double[] s3Scores = {100.0,15.0,50.0};
+        Double[] s7Scores = {100.0,95.0,95.0};
+        Double[] s8Scores = {88.0,65.0,95.0};
+        Double[] s9Scores = {100.0};
+        Double[] s10Scores ={80.0,80.0,80.0};
+        Student s1 = new Student("John","K",s1Scores);
+        Double[] s2Scores = {40.0,40.0,40.0};
+        Student s2 = new Student("Kevin", "P",s2Scores);
+        Student s3 = new Student("Alex", "L",s1Scores);
+        Student s4 = new Student("Tay","L",s3Scores);
+        Student s5 = new Student("T","L",s5Scores);
+        Student s6 = new Student("Kell","D",s6Scores);
+        Student s7 = new Student("Kell","D",s7Scores);
+        Student s8 = new Student("Kell","D",s8Scores);
+        Student s9 = new Student("Kell","D",s9Scores);
+        Student s10 = new Student("Kell","D",s10Scores);
+        Student [] test = {s1,s2,s3,s4,s5,s6,s7,s8,s9,s10};
+        Classroom testClass = new Classroom(test);
+        String actual = testClass.getGradeBook().toString();
+        String expected = "{Kell | D | 100.0 | [100.0]=A, Kell | D | 96.7 | [100.0, 95.0, 95.0]=B, Kell | D | 82.7 | [88.0, 65.0, 95.0]=B, T | L | 80.4 | [75.0, 89.0, 90.2, 67.5]=C, Kell | D | 80.0 | [80.0, 80.0, 80.0]=C, Tay | L | 55.0 | [100.0, 15.0, 50.0]=D, Kevin | P | 40.0 | [40.0, 40.0, 40.0]=D, Kell | D | 37.7 | [10.0, 13.0, 90.0]=D, Alex | L | 10.0 | [10.0, 15.0, 5.0]=D, John | K | 10.0 | [10.0, 15.0, 5.0]=F}";
+        Assert.assertEquals(actual,expected);
     }
 
 }

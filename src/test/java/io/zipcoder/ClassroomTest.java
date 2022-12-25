@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ClassroomTest {
     @Test
@@ -82,7 +84,7 @@ public class ClassroomTest {
         Assert.assertNotEquals(tester.getStudents()[tester.getStudents().length - 1], test); //should not be in the back
     }
     @Test
-    public void testGetGradeBook(){
+    public void testGetGradeBook_old(){
         Double[] s5Scores = {75.0,89.0,90.2,67.5};
         Double[] s1Scores = {10.0,15.0,5.0};
         Double[] s6Scores = {10.0,13.0,90.0};
@@ -108,5 +110,36 @@ public class ClassroomTest {
         String expected = "{Kell | D | 100.0 | [100.0]=A, Kell | D | 96.7 | [100.0, 95.0, 95.0]=B, Kell | D | 82.7 | [88.0, 65.0, 95.0]=B, T | L | 80.4 | [75.0, 89.0, 90.2, 67.5]=C, Kell | D | 80.0 | [80.0, 80.0, 80.0]=C, Tay | L | 55.0 | [100.0, 15.0, 50.0]=D, Kevin | P | 40.0 | [40.0, 40.0, 40.0]=D, Kell | D | 37.7 | [10.0, 13.0, 90.0]=D, Alex | L | 10.0 | [10.0, 15.0, 5.0]=D, John | K | 10.0 | [10.0, 15.0, 5.0]=F}";
         Assert.assertEquals(actual,expected);
     }
+    @Test
+    public void testGetGradeBook() {
+        Student[] students = {
+                new Student("Alice", "Smith", new Double[] {90.0, 80.0, 70.0, 60.0, 50.0}),
+                new Student("Bob", "Johnson", new Double[] {60.0, 70.0, 80.0, 90.0, 100.0}),
+                new Student("Charlie", "Williams", new Double[] {70.0, 80.0, 90.0, 100.0, 90.0}),
+                new Student("Dave", "Jones", new Double[] {50.0, 60.0, 70.0, 80.0, 90.0}),
+                new Student("Eve", "Brown", new Double[] {100.0, 90.0, 80.0, 70.0, 60.0}),
+                new Student("Frank", "Davis", new Double[] {80.0, 70.0, 60.0, 50.0, 40.0}),
+                new Student("Gary", "Miller", new Double[] {40.0, 50.0, 60.0, 70.0, 80.0}),
+                new Student("Henry", "Moore", new Double[] {70.0, 70.0, 70.0, 70.0, 70.0}),
+                new Student("Wally", "Silk", new Double[] {100.0}),
+                new Student("Jimbo", "Bash", new Double[] {99.5}),
+                new Student("Kim", "K", new Double[] {91.6})
+        };
 
-}
+        Classroom classroom = new Classroom(students);
+
+        LinkedHashMap<Student, String> gradeBook = classroom.getGradeBook();
+        Assert.assertEquals("D", gradeBook.get(students[0]));
+        Assert.assertEquals("C", gradeBook.get(students[1]));
+        Assert.assertEquals("C", gradeBook.get(students[2]));
+        Assert.assertEquals("D", gradeBook.get(students[3]));
+        Assert.assertEquals("D", gradeBook.get(students[4]));
+        Assert.assertEquals("F", gradeBook.get(students[5]));
+        Assert.assertEquals("F", gradeBook.get(students[6]));
+        Assert.assertEquals("D", gradeBook.get(students[7]));
+        Assert.assertEquals("A", gradeBook.get(students[8]));
+        Assert.assertEquals("B", gradeBook.get(students[9]));
+        Assert.assertEquals("B", gradeBook.get(students[10]));
+
+    }
+    }
